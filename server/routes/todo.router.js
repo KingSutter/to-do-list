@@ -4,7 +4,9 @@ const router = express.Router();
 const pool = require('../modules/pool.js');
 
 router.get('/', (req,res)=>{
-    let queryText = `SELECT * FROM "to_dos";`;
+    let queryText = `
+        SELECT * FROM "to_dos"
+        ORDER BY "id";`;
     pool.query(queryText).then(result => {
         console.log('sending todos to client');
         res.send(result.rows);

@@ -20,12 +20,16 @@ function getTasks(){
 
 // draws tasks onto the DOM
 function drawTasks(tasks){
+    // clear table
+    $('#toDoList').empty();
+    // write table
     tasks.forEach(Task => {
+        console.log(Task);
         let checkbox = ''
         // check if task is done
         console.log(Task.completed)
         if (Task.completed){
-            checkbox = `<td><input data-status="false" data-id=${Task.id} class="checkbox" type="checkbox" checked></td>`;
+            checkbox = `<td><input data-status="true" data-id=${Task.id} class="checkbox" type="checkbox" checked></td>`;
         }
         else{
             checkbox = `<td><input data-status="false" data-id=${Task.id} class="checkbox" type="checkbox"></td>`;
@@ -44,18 +48,17 @@ function drawTasks(tasks){
 function changeStatus(){
     console.log('changing status invoked');
     let status = $(this).data('status')
+    console.log('status is:',status);
+    console.log('changing status to:',!status);
     let id = $(this).data('id');
-    if (status = 'true'){
-        $.ajax({
-            type: 'PUT',
-            url: `/todos/${id}`,
-            data: {completed: false}
-        }).then(function(response){
-            console.log(response);
-            // rewrite to DOM
-            getTasks();
-        }).catch(function(error){
-            console.log('error in PUT',error);
-        });
-    }
+    $.ajax({
+        type: 'PUT',
+        url: `/todos/${id}`,
+        data: {completed: !status}
+    }).then(function(response){
+        // rewrite to DOM
+        getTasks();
+    }).catch(function(error){
+        console.log('error in PUT',error);
+    });
 }
