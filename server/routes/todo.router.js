@@ -14,4 +14,18 @@ router.get('/', (req,res)=>{
     });
 });
 
+router.put('/:id', (req,res)=>{
+    let queryText = `
+    UPDATE "to_dos"
+    SET completed = ${req.body.completed}
+    WHERE "id" = $1;
+    `;
+    pool.query(queryText, [req.params.id])
+    .then(()=>{
+        res.sendStatus(200);
+    }).catch((error)=>{
+        console.log('error in put on router:',error);
+        res.sendStatus(500);
+    });
+})
 module.exports = router;

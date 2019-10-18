@@ -43,15 +43,17 @@ function drawTasks(tasks){
 // change checkbox status and reflect those changes to database
 function changeStatus(){
     console.log('changing status invoked');
-    const status = $(this).data('status')
-    const id = $(this).data('id');
+    let status = $(this).data('status')
+    let id = $(this).data('id');
     if (status = 'true'){
         $.ajax({
             type: 'PUT',
             url: `/todos/${id}`,
-            data: {status: false}
+            data: {completed: false}
         }).then(function(response){
             console.log(response);
+            // rewrite to DOM
+            getTasks();
         }).catch(function(error){
             console.log('error in PUT',error);
         });
