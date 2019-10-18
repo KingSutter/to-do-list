@@ -42,10 +42,18 @@ function drawTasks(tasks){
 
 // change checkbox status and reflect those changes to database
 function changeStatus(){
-    const status = $(this).data("status")
-    if (status = "true"){
+    console.log('changing status invoked');
+    const status = $(this).data('status')
+    const id = $(this).data('id');
+    if (status = 'true'){
         $.ajax({
             type: 'PUT',
-            url: '/todos'
-    });
+            url: `/todos/${id}`,
+            data: {status: false}
+        }).then(function(response){
+            console.log(response);
+        }).catch(function(error){
+            console.log('error in PUT',error);
+        });
+    }
 }
