@@ -1,5 +1,5 @@
 body {
-    background-color: #f5f5f5;
+    background-color: #f2eecb;
     width: 600px;
     margin: 0 auto;
     padding: 0;
@@ -9,10 +9,10 @@ h1 {
     color: red;
     letter-spacing: -2px;
     text-align: left;
+    font-family: courier, monospace;
 }
 
 #toDoTable {
-    color: #555;
     font-size: 22px;
     padding: 0 !important;
     width: 500px;
@@ -27,12 +27,12 @@ h1 {
     padding: 10px;
 }
 
-.lines {
+#redVerticalLines {
     border-left: 1px solid #ffaa9f;
     border-right: 1px solid #ffaa9f;
     width: 2px;
     float: left;
-    height: 495px;
+    height: 100vh; /* sets the lines to the height of the broser window*/
 }
 
 [data-status = "true"]{
@@ -45,6 +45,6 @@ h1 {
     border: 2px;
 }
 
-.checkbox :hover{
+tr :hover{
     background-color: lightgray;
 }
