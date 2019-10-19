@@ -6,7 +6,7 @@ body {
 }
 
 h1 {
-    color: #cd0000;
+    color: red;
     letter-spacing: -2px;
     text-align: left;
 }
@@ -36,13 +36,10 @@ h1 {
 }
 
 [data-status = "true"]{
-    /* color: green; */
     text-decoration: line-through;
 }
 
-
 #toDoTable{
-    /* background-color: lightgray; */
     border-collapse: collapse;
     border-spacing: 15px 0px;
     border: 2px;
