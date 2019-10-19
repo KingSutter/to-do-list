@@ -29,18 +29,21 @@ function drawTasks(tasks){
         // check if task is done
         console.log(Task.completed)
         if (Task.completed){
-            checkbox = `<td><input data-status="true" data-id=${Task.id} class="checkbox" type="checkbox" checked></td>`;
-        }
-        else{
-            checkbox = `<td><input data-status="false" data-id=${Task.id} class="checkbox" type="checkbox"></td>`;
-        }
-        // add row to DOM
-        $('#toDoList').append(`
-            <tr>
-                ${checkbox}
+            $('#toDoList').append(`
+            <tr class="checkbox" data-status="true" data-id=${Task.id}>
+                <td><input data-status="true" data-id=${Task.id} class="checkbox" type="checkbox" checked></td>
                 <td>${Task.task}</td>
             </tr>
-        `)
+            `);
+        }
+        else{
+            $('#toDoList').append(`
+            <tr class="checkbox" data-status="false" data-id=${Task.id}>
+                <td><input data-status="false" data-id=${Task.id} class="checkbox" type="checkbox"></td>
+                <td>${Task.task}</td>
+            </tr>
+            `);
+        }
     });
 }
 

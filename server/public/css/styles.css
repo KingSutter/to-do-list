@@ -1,0 +1,16 @@
+[data-status = "true"]{
+    /* color: green; */
+    text-decoration: line-through;
+}
+
+
+#toDoList{
+    /* background-color: lightgray; */
+    border-collapse: collapse;
+    border-spacing: 15px 0px;
+    border: 2px;
+}
+
+.checkbox :hover{
+    background-color: lightgray;
+}
