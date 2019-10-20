@@ -46,4 +46,20 @@ router.put('/:id', (req,res)=>{
         res.sendStatus(500);
     });
 })
+
+router.delete('/:id',(req,res)=>{
+    let queryText = `
+    DELETE FROM "to_dos"
+    WHERE "id" = $1;
+    `
+    pool.query(queryText, [req.params.id])
+    .then(()=>{
+        res.sendStatus(200);
+    })
+    .catch((error)=>{
+        console.log('error in delete on router:',error);
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;

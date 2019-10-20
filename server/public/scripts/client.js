@@ -4,6 +4,7 @@ $(document).ready(function(){
     // event listeners
     $('#toDoList').on('click','.checkbox',changeStatus);
     $("#toDoList").on('click','#addTaskButton',addTask);
+    $("#toDoList").on('click','.deleteButton',removeTask);
 });
 
 // gets to-dos from server (which comes from the database)
@@ -26,7 +27,6 @@ function drawTasks(tasks){
     // write table
     tasks.forEach(Task => {
         console.log(Task);
-        let checkbox = ''
         // check if task is done
         console.log(Task.completed)
         if (Task.completed){
@@ -34,7 +34,7 @@ function drawTasks(tasks){
             <tr class="taskRow">
                 <td><input data-status="true" data-id=${Task.id} class="checkbox" type="checkbox" checked></td>
                 <td class="checkbox" data-status="true" data-id=${Task.id}>${Task.task}</td>
-                <td><button class="deleteButton" data-id=${Task.id}>Delete</button></td>
+                <td><button class="deleteButton" data-id=${Task.id}>Remove</button></td>
             </tr>
             `);
         }
@@ -43,7 +43,7 @@ function drawTasks(tasks){
             <tr class="taskRow">
                 <td><input data-status="false" data-id=${Task.id} class="checkbox" type="checkbox"></td>
                 <td data-status="false" data-id=${Task.id} class="checkbox">${Task.task}</td>
-                <td><button class="deleteButton" data-id=${Task.id}>Delete</button></td>                
+                <td><button class="deleteButton" data-id=${Task.id}>Remove</button></td>                
             </tr>
             `);
         }
@@ -54,7 +54,7 @@ function drawTasks(tasks){
             <td><form action="/todos" method="post">
             <input name="userIn" type="text" autocomplete="off" id="userIn" placeholder="make a task...">
             </td>
-            <td><button type="submit" id="addTaskButton">Submit</button></td>
+            <td><button type="button" name="submitButton" id="addTaskButton">Submit</button></td>
             </form>
         </tr>
     `)
@@ -98,6 +98,21 @@ function addTask(e){
     }).then(function(response){
         // rewrite to DOM
         $('#userIn').val('');
+        getTasks();
+    }).catch(function(error){
+        console.log('error in POST',error);
+    });
+}
+
+// removes task from database when called
+function removeTask(){
+    deleteId = $(this).data("id");
+    console.log("remove task clicked at id:",deleteId);
+    $.ajax({
+        type: 'DELETE',
+        url: `/todos/${deleteId}`,
+    }).then(function(response){
+        // rewrite to DOM
         getTasks();
     }).catch(function(error){
         console.log('error in POST',error);
