@@ -3,6 +3,7 @@ body {
     width: 600px;
     margin: 0 auto;
     padding: 0;
+    font-family: courier, monospace;
 }
 
 h1 {
@@ -27,13 +28,13 @@ h1 {
     padding: 10px;
 }
 
-#redVerticalLines {
+/* #redVerticalLines {
     border-left: 1px solid #ffaa9f;
     border-right: 1px solid #ffaa9f;
     width: 2px;
     float: left;
-    height: 100vh; /* sets the lines to the height of the broser window*/
-}
+    height: 100vh; /* sets the lines to the height of the broser window
+}*/
 
 [data-status = "true"]{
     text-decoration: line-through;
@@ -51,4 +52,9 @@ h1 {
 
 input[type="text"]{
     background-color: transparent;
+}
+
+button {
+    font-family: courier, monospace;
+    font-size: 22px;
 }

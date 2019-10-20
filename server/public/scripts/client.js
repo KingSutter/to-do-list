@@ -33,6 +33,7 @@ function drawTasks(tasks){
             <tr class="checkbox" data-status="true" data-id=${Task.id}>
                 <td><input data-status="true" data-id=${Task.id} class="checkbox" type="checkbox" checked></td>
                 <td>${Task.task}</td>
+                <td><button>Delete</button></td>
             </tr>
             `);
         }
@@ -41,6 +42,7 @@ function drawTasks(tasks){
             <tr class="checkbox" data-status="false" data-id=${Task.id}>
                 <td><input data-status="false" data-id=${Task.id} class="checkbox" type="checkbox"></td>
                 <td>${Task.task}</td>
+                <td><button>Delete</button></td>                
             </tr>
             `);
         }
@@ -48,7 +50,8 @@ function drawTasks(tasks){
     $('#toDoList').append(`
         <tr>
             <td><input type="checkbox" disabled</td>
-            <td><input type="text" autocomplete="off" id="userIn"></td>
+            <td><form action="/todos" method="post">
+                <input name="userIn" type="text" autocomplete="off" id="userIn" placeholder="make a task..."></form></td>
         </tr>
     `)
 }
@@ -72,18 +75,24 @@ function changeStatus(){
     });
 }
 
+// gets user input and sends to database then updates DOM
 function addTask(){
     console.log('add task invoked');
-    // get text input
-    $('')
+    // check for empty input
+    if ( $.trim( $('#userIn').val() ) == '' ){
+        alert('input is blank');
+        return false;
+    }
+    // sent input to database
     $.ajax({
         type: 'POST',
         url: `/todos`,
         data: {
-            task: textIn,
+            task: $('#userIn').val(),
         }
     }).then(function(response){
         // rewrite to DOM
+        $('#userIn').val('');
         getTasks();
     }).catch(function(error){
         console.log('error in POST',error);
