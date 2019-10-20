@@ -16,6 +16,22 @@ router.get('/', (req,res)=>{
     });
 });
 
+router.post('/',  (req, res) => {
+    let newTask = req.body;
+    console.log(`Adding task`, newTask);
+    let queryText = `INSERT INTO "to_dos" ("task","completed")
+                     VALUES ($1,'false');`;
+    pool.query(queryText, [newTask.task])
+      .then(result => {
+        console.log("add task success");
+        res.sendStatus(201);
+      })
+      .catch(error => {
+        console.log(`Error adding new book`, error);
+        res.sendStatus(500);
+    });
+});
+
 router.put('/:id', (req,res)=>{
     let queryText = `
     UPDATE "to_dos"
