@@ -3,7 +3,7 @@ $(document).ready(function(){
     getTasks();
     // event listeners
     $('#toDoList').on('click','.checkbox',changeStatus);
-    $("#addTaskButton").on('click',addTask);
+    $("#toDoList").on('click','#addTaskButton',addTask);
 });
 
 // gets to-dos from server (which comes from the database)
@@ -80,8 +80,8 @@ function changeStatus(){
 }
 
 // gets user input and sends to database then updates DOM
-function addTask(){
-    // e.preventDefault();
+function addTask(e){
+    e.preventDefault();
     console.log('add task invoked');
     // check for empty input
     if ( $.trim( $('#userIn').val() ) == '' ){
