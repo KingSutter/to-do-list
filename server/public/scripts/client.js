@@ -3,6 +3,7 @@ $(document).ready(function(){
     getTasks();
     // event listeners
     $('#toDoList').on('click','.checkbox',changeStatus);
+    $("#addTaskButton").on('click',addTask);
 });
 
 // gets to-dos from server (which comes from the database)
@@ -30,19 +31,19 @@ function drawTasks(tasks){
         console.log(Task.completed)
         if (Task.completed){
             $('#toDoList').append(`
-            <tr>
+            <tr class="taskRow">
                 <td><input data-status="true" data-id=${Task.id} class="checkbox" type="checkbox" checked></td>
                 <td class="checkbox" data-status="true" data-id=${Task.id}>${Task.task}</td>
-                <td><button>Delete</button></td>
+                <td><button class="deleteButton" data-id=${Task.id}>Delete</button></td>
             </tr>
             `);
         }
         else{
             $('#toDoList').append(`
-            <tr>
+            <tr class="taskRow">
                 <td><input data-status="false" data-id=${Task.id} class="checkbox" type="checkbox"></td>
                 <td data-status="false" data-id=${Task.id} class="checkbox">${Task.task}</td>
-                <td><button>Delete</button></td>                
+                <td><button class="deleteButton" data-id=${Task.id}>Delete</button></td>                
             </tr>
             `);
         }
@@ -51,7 +52,10 @@ function drawTasks(tasks){
         <tr>
             <td><input type="checkbox" disabled</td>
             <td><form action="/todos" method="post">
-                <input name="userIn" type="text" autocomplete="off" id="userIn" placeholder="make a task..."></form></td>
+            <input name="userIn" type="text" autocomplete="off" id="userIn" placeholder="make a task...">
+            </td>
+            <td><button type="submit" id="addTaskButton">Submit</button></td>
+            </form>
         </tr>
     `)
 }
@@ -77,6 +81,7 @@ function changeStatus(){
 
 // gets user input and sends to database then updates DOM
 function addTask(){
+    // e.preventDefault();
     console.log('add task invoked');
     // check for empty input
     if ( $.trim( $('#userIn').val() ) == '' ){

@@ -46,12 +46,13 @@ h1 {
     border: 2px;
 }
 
-.checkbox :hover{
+.taskRow :hover{
     background-color: lightgray;
 }
 
 input[type="text"]{
     background-color: transparent;
+    outline: transparent;
 }
 
 button {
