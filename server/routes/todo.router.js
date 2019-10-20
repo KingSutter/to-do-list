@@ -54,6 +54,7 @@ router.delete('/:id',(req,res)=>{
     DELETE FROM "to_dos"
     WHERE "id" = $1;
     `
+    console.log("removing task at id:",req.params.id);
     pool.query(queryText, [req.params.id])
     .then(()=>{
         res.sendStatus(200);
