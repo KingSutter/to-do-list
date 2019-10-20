@@ -19,6 +19,7 @@
   "homepage": "https://github.com/KingSutter/weekend-sql-to-do-list#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.3.1",
     "express": "^4.17.1",
     "pg": "^7.12.1"
   }
