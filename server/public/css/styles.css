@@ -7,10 +7,11 @@ body {
 }
 
 h1 {
-    color: red;
+    color: #d60000;
     letter-spacing: -2px;
     text-align: left;
     font-family: courier, monospace;
+    text-decoration: underline;;
 }
 
 #toDoTable{
@@ -28,13 +29,13 @@ h1 {
     padding: 10px;
 }
 
-/* #redVerticalLines {
+#redVerticalLines {
     border-left: 1px solid #ffaa9f;
     border-right: 1px solid #ffaa9f;
     width: 2px;
     float: left;
-    height: 100vh; /* sets the lines to the height of the broser window
-}*/
+    height: 100vh; /* sets the lines to the height of the broser window */
+}
 
 [data-status = "true"]{
     text-decoration: line-through;

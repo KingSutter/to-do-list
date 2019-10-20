@@ -33,12 +33,14 @@ router.post('/',  (req, res) => {
 });
 
 router.put('/:id', (req,res)=>{
+    let id = req.params.id;
+    console.log("changing status of id:",id);
     let queryText = `
     UPDATE "to_dos"
     SET completed = ${req.body.completed}
     WHERE "id" = $1;
     `;
-    pool.query(queryText, [req.params.id])
+    pool.query(queryText, [id])
     .then(()=>{
         res.sendStatus(200);
     }).catch((error)=>{
