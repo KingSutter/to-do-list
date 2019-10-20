@@ -4,7 +4,7 @@ An application for managing a simple to-do list.
 
 ## Installation
 
-1. Install node [download link here](https://nodejs.org/en/download/)
+1. [Install Node.js](https://nodejs.org/en/download/)
 2. Open the terminal
 3. Use the command line to navigate to the project folder
     - Use the command `cd  ~/` and type the file path to the project after the forward slash `/`
@@ -14,7 +14,7 @@ An application for managing a simple to-do list.
     - pg
 5. Set up a database using Postgre for storing to-dos
     - I used [Postico](https://eggerapps.at/postico/) for the set-up
-    - Creata a database named `to_do_list`
+    - Create a database named `to_do_list`
     - Copy-paste the sequel commands in the database.sql file and run them for ease of use
 6. Run the program using the following on the command line: `npm start`
     - If this doesn't work, try `node server/server.js`
