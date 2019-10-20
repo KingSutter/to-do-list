@@ -30,18 +30,18 @@ function drawTasks(tasks){
         console.log(Task.completed)
         if (Task.completed){
             $('#toDoList').append(`
-            <tr class="checkbox" data-status="true" data-id=${Task.id}>
+            <tr>
                 <td><input data-status="true" data-id=${Task.id} class="checkbox" type="checkbox" checked></td>
-                <td>${Task.task}</td>
+                <td class="checkbox" data-status="true" data-id=${Task.id}>${Task.task}</td>
                 <td><button>Delete</button></td>
             </tr>
             `);
         }
         else{
             $('#toDoList').append(`
-            <tr class="checkbox" data-status="false" data-id=${Task.id}>
+            <tr>
                 <td><input data-status="false" data-id=${Task.id} class="checkbox" type="checkbox"></td>
-                <td>${Task.task}</td>
+                <td data-status="false" data-id=${Task.id} class="checkbox">${Task.task}</td>
                 <td><button>Delete</button></td>                
             </tr>
             `);

@@ -57,4 +57,5 @@ input[type="text"]{
 button {
     font-family: courier, monospace;
     font-size: 22px;
+    background-color: transparent
 }
