@@ -12,7 +12,7 @@ h1 {
     font-family: courier, monospace;
 }
 
-#toDoTable {
+#toDoTable, #userIn {
     font-size: 22px;
     padding: 0 !important;
     width: 500px;
@@ -45,6 +45,10 @@ h1 {
     border: 2px;
 }
 
-tr :hover{
+.checkbox :hover{
     background-color: lightgray;
+}
+
+input[type="text"]{
+    background-color: transparent;
 }

@@ -45,6 +45,12 @@ function drawTasks(tasks){
             `);
         }
     });
+    $('#toDoList').append(`
+        <tr>
+            <td><input type="checkbox" disabled</td>
+            <td><input type="text" autocomplete="off" id="userIn"></td>
+        </tr>
+    `)
 }
 
 // change checkbox status and reflect those changes to database
@@ -63,5 +69,23 @@ function changeStatus(){
         getTasks();
     }).catch(function(error){
         console.log('error in PUT',error);
+    });
+}
+
+function addTask(){
+    console.log('add task invoked');
+    // get text input
+    $('')
+    $.ajax({
+        type: 'POST',
+        url: `/todos`,
+        data: {
+            task: textIn,
+        }
+    }).then(function(response){
+        // rewrite to DOM
+        getTasks();
+    }).catch(function(error){
+        console.log('error in POST',error);
     });
 }
