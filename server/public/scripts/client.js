@@ -52,8 +52,8 @@ function drawTasks(tasks){
     $('#toDoList').append(`
         <tr>
             <td><input type="checkbox" disabled></td>
-            <td><input name="userIn" type="text" autocomplete="off" id="userIn" placeholder="add a task..."></td>
-            <td><button type="submit" name="submitButton" id="addTaskButton">Submit</button></td>
+            <td><form><input name="userIn" type="text" autocomplete="off" id="userIn" placeholder="add a task..."></td>
+            <td><button type="submit" name="submitButton" id="addTaskButton">Submit</button></form></td>
         </tr>
     `)
 }
@@ -78,8 +78,8 @@ function changeStatus(){
 }
 
 // gets user input and sends to database then updates DOM
-function addTask(){
-    // e.preventDefault();
+function addTask(e){
+    e.preventDefault();
     console.log('add task invoked');
     // check for empty input
     if ( $.trim( $('#userIn').val() ) == '' ){
