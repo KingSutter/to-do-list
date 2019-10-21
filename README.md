@@ -1,6 +1,7 @@
 # To-Do List
 
 An application for managing a simple to-do list.
+If you would prefer to skip the installation onto your local machine, please head to the app's deployed version [here](https://weekend-to-do-list-will.herokuapp.com/)
 
 ## Installation
 
