@@ -26,4 +26,4 @@ An application for managing a simple to-do list.
 - Once they complete a task, they can click on the task text or the checkbox on the left and the task will be marked as complete. 
 - If a user wants to delete a task permanently, they can click the "**Remove**" button on the right side.
 
-![Preview](/images/preview.gif)
+![Preview](/images/example.gif)
