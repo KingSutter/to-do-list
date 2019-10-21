@@ -104,6 +104,10 @@ function addTask(){
 
 // removes task from database when called
 function removeTask(){
+    // confimation message on delete, return out of function if response is no
+    if (!confirm("Are you sure you want to remove this task?")){
+        return false;
+    }
     deleteId = $(this).data("id");
     console.log("remove task clicked at id:",deleteId);
     $.ajax({
