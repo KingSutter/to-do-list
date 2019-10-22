@@ -52,9 +52,9 @@ function drawTasks(tasks){
     $('#toDoList').append(`
         <tr>
             <td><input type="checkbox" disabled></td>
-            <td><form onsubmit="addTask()"><input name="userIn" type="text" autocomplete="off" id="userIn" placeholder="add a task..."></td>
-            <button type="submit" name="submitButton" id="addTaskButton">Submit</button>
-            </form></td>
+            <td><input name="userIn" type="text" autocomplete="off" id="userIn" placeholder="add a task..."></td>
+            <td><button type="submit" name="submitButton" id="addTaskButton">Submit</button>
+            </td>
         </tr>
     `)
 }
